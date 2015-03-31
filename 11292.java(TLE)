@@ -1,0 +1,65 @@
+
+import java.util.Scanner ;
+
+public class Dragon {
+
+	public static void bubbleSort(int[] array)
+	{
+		for(int a = array.length - 1 ; a > 0 ; a--)
+			for(int b = 0 ; b < a ; b++)
+			{
+				if(array[b] > array[b+1])
+					swap(array , b , b+1) ;
+			}
+	}
+	
+	private static void swap(int[] array , int indexA , int indexB)
+	{
+		int temp = array[indexA] ;
+		array[indexA] = array[indexB] ;
+		array[indexB] = temp ;
+	}
+	
+	
+	public static void main(String[] args) {
+		Scanner keyboard = new Scanner(System.in) ;
+		
+		while(keyboard.hasNext())
+		{
+			int n = keyboard.nextInt() ;
+			int m = keyboard.nextInt() ;
+			int[] head = new int[n] ;
+			int[] knight = new int[m] ;		
+			int cost = 0 ;
+			
+			if(n == 0 && m == 0)
+				System.exit(0) ;
+			else
+			{
+				for(int a = 0 ; a < n ; a++)
+					head[a] = keyboard.nextInt() ;
+				for(int a = 0 ; a < m ; a++)
+					knight[a] = keyboard.nextInt() ;
+				bubbleSort(head) ;
+				bubbleSort(knight) ;
+				
+				int currentHead = 0 ;
+				for(int a = 0 ; a < m ; a++)
+				{
+					if(knight[a] >= head[currentHead])
+					{
+						cost += knight[a] ;
+						currentHead++ ;
+						if(currentHead == n)
+							break ;
+					}
+				}
+				if(currentHead < n)
+					System.out.println("Loowater is doomed!") ;
+				else
+					System.out.println(cost) ;
+			}
+		}
+	}
+
+}
