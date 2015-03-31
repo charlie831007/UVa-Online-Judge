@@ -9,14 +9,14 @@ public class Algorithm {
 			int i = keyboard.nextInt() ;
 			int j = keyboard.nextInt() ;
 			int swap = 0 ;
+			System.out.print(i + " " + j + " ") ;
 			if(i > j)
 			{
 				swap = i ;
 				i = j ;
 				j = swap ;
 			}
-			System.out.print(i + " " + j + " ") ;
-			 
+			
 			int longestLength = 1 ;
 			for(int a = i ; a <= j ; a++)
 			{
